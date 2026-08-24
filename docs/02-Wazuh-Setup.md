@@ -1,4 +1,5 @@
-## Installing Wazuh in Ubuntu Server
+## Wazuh Setup
+### Installing Wazuh in Ubuntu Server
   - wget https://packages.wazuh.com/4.14/wazuh-install.sh
   - sudo bash ./wazuh-install.sh -a
 
@@ -25,3 +26,8 @@ Run the Wazuh generated command in the Windows 10 vm, it will download the Wazuh
 
 Then start the agent:
 - NET START Wazuh
+
+Verify the Windows service:
+- Get-Service Wazuh
+
+Check Wazuh dashboard you will see WIN10-ENDPOINT as Active
