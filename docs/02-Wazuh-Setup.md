@@ -87,7 +87,9 @@ Check status :- sudo systemctl status filebeat
 Verify archives are enabled :- grep -A5 -B2 "archives:" /etc/filebeat/filebeat.yml
 
 
-### Create archive index in Wazuh
+### Create archives index in Wazuh
 In the Wazuh dashboard, go to  ☰ -> Dashboard Management -> Index Patterns -> Create Index Pattern -> Enter wazuh-archives-*
 
 Then for the timefield select timestamp and create it.
+
+Go to ☰ -> Explore -> Discover ; there you can select :- wazuh-archives-*
