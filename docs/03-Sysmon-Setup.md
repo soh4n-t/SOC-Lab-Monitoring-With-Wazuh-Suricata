@@ -11,4 +11,7 @@ Open Administrator PowerShell and run:
 - Get-Service Sysmon64   (Verify Sysmon)
 - Get-WinEvent -ListLog "Microsoft-Windows-Sysmon/Operational"   (Verify event log)
 - notepad.exe   (Generate sysmon event)
-- close notepad and then 
+- close notepad and then run :-
+
+Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 10 |
+Select-Object TimeCreated, Id, ProviderName, Message
