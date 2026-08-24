@@ -69,7 +69,7 @@ filebeat.modules:
       enabled: false
 ```  
 Then change;
-
-archives: 
-   
+```
+archives:    
   enabled : true
+```
