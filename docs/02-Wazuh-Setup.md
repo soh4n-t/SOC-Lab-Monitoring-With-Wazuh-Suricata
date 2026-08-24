@@ -7,6 +7,7 @@ After downloading you will get a username and password, store it somewhere.
 
 It is needed for accessing wazuh dashboard in the host system.
 
+
 ### Check Wazuh Services
   - sudo systemctl status wazuh-manager.service
   - sudo systemctl status wazuh-indexer.service
@@ -14,8 +15,9 @@ It is needed for accessing wazuh dashboard in the host system.
 
 Once Wazuh services are active; in the host system, open browser and enter https://ubuntu-ip.
 
+
 ### Connect Windows to Wazuh
-In the Wazuh dashboard, go to Agents management -> Summary -> Deploy new agent
+In the Wazuh dashboard, go to ☰ -> Agents management -> Summary -> Deploy new agent
 
 Select Windows -> MSI 32/64 bits
 
@@ -32,6 +34,7 @@ Verify the Windows service:
 - Get-Service Wazuh
 
 Check Wazuh dashboard you will see WIN10-ENDPOINT as Active
+
 
 ### Enabling Wazuh archives in Wazuh dashboard
 On ubuntu-server run :- sudo cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.backup
@@ -73,3 +76,18 @@ Then change;
 archives:    
   enabled : true
 ```
+Test filebeat configuration :- sudo filebeat test config
+
+Test connection to Wazuh indexer :- sudo filebeat test output
+
+Restart filebeat :- sudo systemctl restart filebeat
+
+Check status :- sudo systemctl status filebeat 
+
+Verify archives are enabled :- grep -A5 -B2 "archives:" /etc/filebeat/filebeat.yml
+
+
+### Create archive index in Wazuh
+In the Wazuh dashboard, go to  ☰ -> Dashboard Management -> Index Patterns -> Create Index Pattern -> Enter wazuh-archives-*
+
+Then for the timefield select timestamp and create it.
