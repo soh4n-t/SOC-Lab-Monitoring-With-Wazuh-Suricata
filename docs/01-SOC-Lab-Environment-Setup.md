@@ -23,6 +23,7 @@ It is used for:
   - File activity monitoring
   - PowerShell activity monitoring
   - Network traffic monitoring
+
 Components installed in Windows include:
   - Sysmon
   - Suricata
