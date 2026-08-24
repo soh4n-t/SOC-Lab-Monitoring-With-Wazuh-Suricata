@@ -37,21 +37,16 @@ Check Wazuh dashboard you will see WIN10-ENDPOINT as Active
 On ubuntu-server run :- sudo cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.backup
 
 Open configuration :- sudo nano /var/ossec/etc/ossec.conf
-
-<global>
-  
-    <jsonout_output>yes</jsonout_output>
-    
+```
+<global>  
+    <jsonout_output>yes</jsonout_output>   
     <alerts_log>yes</alerts_log>
-
-    <logall>no</logall>
-    
-    <logall_json>no</logall_json>
-    
+    <logall>no</logall>   
+    <logall_json>no</logall_json>    
     ...
     
 </global>
-
+```
 In the configuration, change those two "no" shown here in the code block to "yes"
 
 Validate configuration :- sudo /var/ossec/bin/wazuh-analysisd -t
