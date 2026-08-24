@@ -42,4 +42,6 @@ It is used for:
 It is the Wazuh dashboard.
 It is used to:
   - Run the three virtual machines
-  - Access the Wazuh Dashboard through a web browser    
+  - Access the Wazuh Dashboard through a web browser
+Before doing anything, first check for connectivity between the three virtual machines.
+Arrange the 3 machines in the same subnet (I prefer Nat).
