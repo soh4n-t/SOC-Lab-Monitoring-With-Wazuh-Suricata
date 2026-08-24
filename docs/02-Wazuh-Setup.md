@@ -67,15 +67,10 @@ If archived: enabled is 'false', run :- sudo nano /etc/filebeat/filebeat.yml
 And find:
 
 filebeat.modules:
-
-    module: wazuh
-    
-    alerts:
-    
-      enabled: true
-      
-    archives:
-    
+    module: wazuh    
+    alerts:    
+      enabled: true   
+    archives:    
       enabled: false
       
 Then change;
