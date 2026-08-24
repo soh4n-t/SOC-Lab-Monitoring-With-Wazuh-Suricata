@@ -10,8 +10,8 @@ Open Administrator PowerShell and run:
 - .\Sysmon64.exe -accepteula -i   (Installing Sysmon)
 - Get-Service Sysmon64   (Verify Sysmon)
 - Get-WinEvent -ListLog "Microsoft-Windows-Sysmon/Operational"   (Verify event log)
-- notepad.exe   (Generate sysmon event)
-- close notepad and then run :-
+- notepad.exe   (Generate sysmon event)  
+- close notepad
+- Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 10 | Select-Object TimeCreated, Id, ProviderName, Message   (Should generate process creation telemetry)
 
-Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 10 |
-Select-Object TimeCreated, Id, ProviderName, Message
+
