@@ -6,6 +6,7 @@
 After downloading you will get a username and password, store it somewhere.
 
 It is needed for accessing wazuh dashboard in the host system.
+
 ### Check Wazuh Services
   - sudo systemctl status wazuh-manager.service
   - sudo systemctl status wazuh-indexer.service
@@ -31,6 +32,7 @@ Verify the Windows service:
 - Get-Service Wazuh
 
 Check Wazuh dashboard you will see WIN10-ENDPOINT as Active
+
 ### Enabling Wazuh archives in Wazuh dashboard
 On ubuntu-server run :- sudo cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.backup
 
