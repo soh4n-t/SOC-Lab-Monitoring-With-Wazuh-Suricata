@@ -65,14 +65,14 @@ Verify the archives :- sudo grep -A5 -B2 "archives:" /etc/filebeat/filebeat.yml
 If archived: enabled is 'false', run :- sudo nano /etc/filebeat/filebeat.yml
 
 And find:
-
+```
 filebeat.modules:
     module: wazuh    
     alerts:    
       enabled: true   
     archives:    
       enabled: false
-      
+```  
 Then change;
 
 archives: 
