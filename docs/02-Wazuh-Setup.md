@@ -31,3 +31,53 @@ Verify the Windows service:
 - Get-Service Wazuh
 
 Check Wazuh dashboard you will see WIN10-ENDPOINT as Active
+### Enabling Wazuh archives in Wazuh dashboard
+On ubuntu-server run :- sudo cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.backup
+
+Open configuration :- sudo nano /var/ossec/etc/ossec.conf
+
+<global>
+  
+    <jsonout_output>yes</jsonout_output>
+    
+    <alerts_log>yes</alerts_log>
+
+    <logall>no</logall>
+    
+    <logall_json>no</logall_json>
+    
+    ...
+    
+</global>
+
+In the configuration, change those two "no" shown here in the code block to "yes"
+
+Validate configuration :- sudo /var/ossec/bin/wazuh-analysisd -t
+
+Restart Wazuh manager :- sudo systemctl restart wazuh-manager
+
+Verify status :- sudo systemctl status wazuh-manager
+
+Verify the archives :- sudo grep -A5 -B2 "archives:" /etc/filebeat/filebeat.yml
+
+If archived: enabled is 'false', run :- sudo nano /etc/filebeat/filebeat.yml
+
+And find:
+
+filebeat.modules:
+
+    module: wazuh
+    
+    alerts:
+    
+      enabled: true
+      
+    archives:
+    
+      enabled: false
+      
+Then change;
+
+archives: 
+   
+  enabled : true
