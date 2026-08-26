@@ -38,7 +38,7 @@ If there is error in emerging-icmp_info.rules; run :- Test-Path "C:\Program File
 
 Open suricata.yaml :- notepad "C:\Program Files\Suricata\suricata.yaml"
 
-
+Search for  emerging-icmp_info.rules and change it to :- '  # - emerging-icmp_info.rules  '
 ### Running Suricata
 In Administrator PowerShell, run;
 
