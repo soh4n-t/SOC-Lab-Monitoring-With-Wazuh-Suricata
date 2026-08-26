@@ -33,6 +33,10 @@ Paste the following and save it:
       <Image condition="end with">.exe</Image>
     </DnsQuery>
 
+    <RegistryEvent onmatch="include">
+      <Image condition="end with">.exe</Image>
+    </RegistryEvent>
+
   </EventFiltering>
 </Sysmon>
 ```
