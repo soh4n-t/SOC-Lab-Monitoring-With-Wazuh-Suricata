@@ -25,10 +25,6 @@ Paste the following and save it:
       <Image condition="end with">.exe</Image>
     </NetworkConnect>
 
-    <CreateRemoteThread onmatch="include">
-      <SourceImage condition="end with">.exe</SourceImage>
-    </CreateRemoteThread>
-
     <DnsQuery onmatch="include">
       <Image condition="end with">.exe</Image>
     </DnsQuery>
@@ -36,6 +32,10 @@ Paste the following and save it:
     <RegistryEvent onmatch="include">
       <Image condition="end with">.exe</Image>
     </RegistryEvent>
+
+    <CreateRemoteThread onmatch="include">
+      <SourceImage condition="end with">.exe</SourceImage>
+    </CreateRemoteThread>
 
   </EventFiltering>
 </Sysmon>
