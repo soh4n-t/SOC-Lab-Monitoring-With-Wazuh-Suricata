@@ -9,6 +9,13 @@ Download from :- https://npcap.com/#download
 
 Make sure to install Npcap in WinPcap API-compatible-Mode
 
+### Running Suricata
+In Administrator PowerShell, run;
+
+Find Windows network adaptor :-  Get-NetAdapter | Select-Object Name, InterfaceGuid, Status
+
+Run Suricata :-  & "C:\Program Files\Suricata\suricata.exe" -c "C:\Program Files\Suricata\suricata.yaml" -i "\Device\NPF_{InterfaceGuid}"
+
 ### Suricata update
 Install Python :- https://www.python.org/downloads/release/pymanager-263/
 
@@ -34,15 +41,9 @@ Copy rules :- Copy-Item "C:\SuricataRules\rules\*" "C:\Program Files\Suricata\ru
 
 Test Suricata :- & "C:\Program Files\Suricata\suricata.exe" -T -c "C:\Program Files\Suricata\suricata.yaml"
 
-If there is error in emerging-icmp_info.rules; run :- Test-Path "C:\Program Files\Suricata\rules\emerging-icmp_info.rules"
+If there is an error like ET EXPLOIT 7-Zip 7z File PPMd Properties Parsing Integer Underflow
 
-Open suricata.yaml :- notepad "C:\Program Files\Suricata\suricata.yaml"
 
-Search for  emerging-icmp_info.rules and change it to :- '  # - emerging-icmp_info.rules  '
-### Running Suricata
-In Administrator PowerShell, run;
 
-Find Windows network adaptor :-  Get-NetAdapter | Select-Object Name, InterfaceGuid, Status
-
-Run Suricata :-  & "C:\Program Files\Suricata\suricata.exe" -c "C:\Program Files\Suricata\suricata.yaml" -i "\Device\NPF_{InterfaceGuid}"
+Test Suricata again.
 
