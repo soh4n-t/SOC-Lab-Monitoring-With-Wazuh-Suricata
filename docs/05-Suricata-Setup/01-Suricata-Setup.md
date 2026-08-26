@@ -9,13 +9,6 @@ Download from :- https://npcap.com/#download
 
 Make sure to install Npcap in WinPcap API-compatible-Mode
 
-### Running Suricata
-In Administrator PowerShell, run;
-
-Find Windows network adaptor :-  Get-NetAdapter | Select-Object Name, InterfaceGuid, Status
-
-Run Suricata :-  & "C:\Program Files\Suricata\suricata.exe" -c "C:\Program Files\Suricata\suricata.yaml" -i "\Device\NPF_{InterfaceGuid}"
-
 ### Suricata update
 Install Python :- https://www.python.org/downloads/release/pymanager-263/
 
@@ -25,7 +18,7 @@ Install suricata-update :- pip install suricata-update
 
 Verify :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\suricata-update" --version
 
-Update :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\suricata-update" --version
+Update :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\suricata-update"
 
 Run :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\suricata-update" --suricata "C:\Program Files\Suricata\suricata.exe"
 
@@ -39,11 +32,83 @@ Extract rules :- tar -xzf "C:\SuricataRules\emerging.rules.tar.gz" -C "C:\Surica
 
 Copy rules :- Copy-Item "C:\SuricataRules\rules\*" "C:\Program Files\Suricata\rules\" -Force
 
-Test Suricata :- & "C:\Program Files\Suricata\suricata.exe" -T -c "C:\Program Files\Suricata\suricata.yaml"
+### Running Suricata
+In Administrator PowerShell, run;
+
+Test run Suricata :- & "C:\Program Files\Suricata\suricata.exe" -T -c "C:\Program Files\Suricata\suricata.yaml"
 
 If there is an error like ET EXPLOIT 7-Zip 7z File PPMd Properties Parsing Integer Underflow
 
+Make a backup :- Copy-Item "C:\Program Files\Suricata\rules\emerging-exploit.rules" "C:\Program Files\Suricata\rules\emerging-exploit.rules.bak"
 
+Then open the rule :- notepad "C:\Program Files\Suricata\rules\emerging-exploit.rules"
+
+Go to line(Ctrl G) 4073 & put # at the beginning of that line then save it.
 
 Test Suricata again.
 
+Find Windows network adaptor :-  Get-NetAdapter | Select-Object Name, InterfaceGuid, Status
+
+Run Suricata :-  & "C:\Program Files\Suricata\suricata.exe" -c "C:\Program Files\Suricata\suricata.yaml" -i "\Device\NPF_{InterfaceGuid}"
+
+Keep it running, then  in another Administrator PowerShell;
+
+Create a test rule :- notepad "C:\SuricataRules\test.rules"
+
+Paste this & save it :- alert icmp any any -> any any (msg:"TEST ICMP ALERT"; sid:1000001; rev:1;)  
+
+Make a folder :- mkdir C:\SOC_Project & Enter the folder :- cd C:\SOC_Project
+
+Create a python file :- notepad alert_monitor.py & paste the following code in it:
+```
+import json
+import time
+
+LOG_FILE = r"C:\Program Files\Suricata\log\eve.json"
+
+print("=" * 60)
+print("        SURICATA ALERT MONITOR")
+print("=" * 60)
+print("Monitoring:", LOG_FILE)
+print("Waiting for new alerts...")
+print()
+
+with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as file:
+    file.seek(0, 2)
+
+    while True:
+        line = file.readline()
+
+        if not line:
+            time.sleep(0.5)
+            continue
+
+        try:
+            event = json.loads(line)
+
+            if event.get("event_type") != "alert":
+                continue
+
+            alert = event.get("alert", {})
+
+            print("=" * 60)
+            print("🚨 ALERT DETECTED")
+            print("=" * 60)
+            print("Timestamp   :", event.get("timestamp"))
+            print("Source IP   :", event.get("src_ip"))
+            print("Source Port :", event.get("src_port"))
+            print("Destination :", event.get("dest_ip"))
+            print("Dest Port   :", event.get("dest_port"))
+            print("Protocol    :", event.get("proto"))
+            print("Signature   :", alert.get("signature"))
+            print("Signature ID:", alert.get("signature_id"))
+            print("Severity    :", alert.get("severity"))
+            print("Action      :", alert.get("action"))
+            print()
+
+        except json.JSONDecodeError:
+            continue
+```
+Then run it :- python C:\SOC_Project\alert_monitor.py
+
+Test it with an icmp test from the Kali VM, the alert monitor will display an alert
