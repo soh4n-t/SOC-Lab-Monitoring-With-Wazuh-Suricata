@@ -24,7 +24,7 @@ Run :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\sur
 
 If certificate verify failed; run :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\suricata-update" --suricata "C:\Program Files\Suricata\suricata.exe" --no-check-certificate
 
-If it show failed to copy files, create a temp folder :- New-Item -ItemType Directory -Force C:\SuricataRules
+If it shows failed to copy files, create a temp folder :- New-Item -ItemType Directory -Force C:\SuricataRules
 
 Then download the rules directly :- Invoke-WebRequest -Uri "https://rules.emergingthreats.net/open/suricata-8.0.6/emerging.rules.tar.gz" -OutFile "C:\SuricataRules\emerging.rules.tar.gz"
 
