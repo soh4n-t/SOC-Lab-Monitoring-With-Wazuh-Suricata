@@ -184,3 +184,4 @@ Then run it :- python C:\SOC_Project\alert_monitor.py
 
 Test it with an icmp test from the Kali VM, the alert monitor will display an alert
 
+It means Suricata is generating new alerts and the alert monitor is receiving them.
