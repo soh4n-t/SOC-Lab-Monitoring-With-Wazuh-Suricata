@@ -3,5 +3,6 @@ First edit our test.rules , disable it by putting # at the start of the rule :- 
 
 Edit if it exists here :- notepad "C:\SuricataRules\test.rules"
 
+Generate a dhcp traffic from kali :- sudo dhclient -r && sudo dhclient 
 
-
+It will appear in the alert_monitor.py due to built in Suricata rules
