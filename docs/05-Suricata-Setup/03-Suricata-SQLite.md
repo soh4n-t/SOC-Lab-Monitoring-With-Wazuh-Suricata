@@ -156,7 +156,7 @@ In PowerShell, run these commands seperately:
 python
 import sqlite3
 conn = sqlite3.connect(r"C:\SOC_Project\soc_alerts.db")   :- connect to our database
-cursor.execute("SELECT COUNT(*) FROM alerts").fetchone()  :- see how many alerts we have
+cursor.execute("SELECT COUNT(*) FROM alerts").fetchone()  :- see how many alerts occured/stored
 cursor.execute("SELECT * FROM alerts").fetchall()         :- display the stored alerts
 ```
 
