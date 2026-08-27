@@ -149,3 +149,17 @@ with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as f:
 ```            
 
 Then running alert_monitor.py will create the soc_alerts.db database to store alerts
+
+### Verifying Database Storage
+In PowerShell, run these commands seperately:
+```
+python
+import sqlite3
+conn = sqlite3.connect(r"C:\SOC_Project\soc_alerts.db")   :- connect to our database
+cursor.execute("SELECT COUNT(*) FROM alerts").fetchone()  :- see how many alerts we have
+cursor.execute("SELECT * FROM alerts").fetchall()         :- display the stored alerts
+```
+
+### SOC Investigation Queries
+```
+Identify how many times each alert occured :- cursor.execute("SELECT signature, COUNT(*) FROM alerts GROUP BY signature").fetchall()
