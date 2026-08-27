@@ -1,3 +1,5 @@
+### Storing Suricata Alerts in SQLite
+Replace alerts_monitor.py with the following code:
 ```
 import json
 import time
