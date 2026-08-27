@@ -147,3 +147,5 @@ with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as f:
         except Exception as e:
             print("Monitor error:", e)
 ```            
+
+Then running alert_monitor.py will create the soc_alerts.db database to store alerts
