@@ -163,3 +163,7 @@ cursor.execute("SELECT * FROM alerts").fetchall()         :- display the stored 
 ### SOC Investigation Queries
 ```
 Identify how many times each alert occured :- cursor.execute("SELECT signature, COUNT(*) FROM alerts GROUP BY signature").fetchall()
+Find recent alerts                         :- cursor.execute("SELECT timestamp, source_ip, destination_ip, protocol, signature, severity FROM alerts ORDER BY id DESC LIMIT 10").fetchall()
+Find higher severe alerts                  :- cursor.execute("SELECT timestamp, source_ip, destination_ip, protocol, signature, severity FROM alerts WHERE severity >= 3 ORDER BY id DESC").fetchall()
+IPs generating the most alerts             :-  cursor.execute("SELECT source_ip, COUNT(*) AS alert_count FROM alerts GROUP BY source_ip ORDER BY alert_count DESC").fetchall()
+```
