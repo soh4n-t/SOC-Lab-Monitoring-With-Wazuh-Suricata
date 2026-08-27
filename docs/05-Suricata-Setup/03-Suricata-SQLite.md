@@ -1,13 +1,19 @@
 ```
 import json
 import time
+import os
 import sqlite3
 
 LOG_FILE = r"C:\Program Files\Suricata\log\eve.json"
 DB_FILE = r"C:\SOC_Project\soc_alerts.db"
 
-# Create database
+
+# --------------------------------------------------
+# SQLite Database Setup
+# --------------------------------------------------
+
 conn = sqlite3.connect(DB_FILE)
+
 cursor = conn.cursor()
 
 cursor.execute("""
@@ -29,34 +35,42 @@ CREATE TABLE IF NOT EXISTS alerts (
 conn.commit()
 
 print("=" * 60)
-print("           SOC ALERT MONITOR")
+print("             SURICATA ALERT MONITOR")
 print("=" * 60)
-print("Suricata log :", LOG_FILE)
-print("Database     :", DB_FILE)
-print("Status       : Monitoring...")
-print()
+print(f"Monitoring: {LOG_FILE}")
+print(f"Database  : {DB_FILE}")
+print("Waiting for new alerts...")
+print("=" * 60)
 
-with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as file:
 
-    # Start at the end of the existing log
-    file.seek(0, 2)
+# --------------------------------------------------
+# Monitor eve.json
+# --------------------------------------------------
+
+with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as f:
+
+    # Start from the current end of the file
+    f.seek(0, os.SEEK_END)
 
     while True:
 
-        line = file.readline()
+        line = f.readline()
 
         if not line:
-            time.sleep(0.5)
+            time.sleep(0.2)
             continue
 
         try:
+
             event = json.loads(line)
 
+            # Ignore everything except Suricata alerts
             if event.get("event_type") != "alert":
                 continue
 
             alert = event.get("alert", {})
 
+            # Extract alert information
             timestamp = event.get("timestamp")
             source_ip = event.get("src_ip")
             source_port = event.get("src_port")
@@ -68,7 +82,32 @@ with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as file:
             severity = alert.get("severity")
             action = alert.get("action")
 
-            # Store alert
+            # --------------------------------------------------
+            # Display Alert
+            # --------------------------------------------------
+
+            print()
+            print("=" * 60)
+            print("🚨 ALERT DETECTED")
+            print("=" * 60)
+
+            print("Timestamp    :", timestamp)
+            print("Source IP    :", source_ip)
+            print("Source Port  :", source_port)
+            print("Destination  :", destination_ip)
+            print("Dest Port    :", destination_port)
+            print("Protocol     :", protocol)
+            print("Signature    :", signature)
+            print("Signature ID :", signature_id)
+            print("Severity     :", severity)
+            print("Action       :", action)
+
+            print("=" * 60)
+
+            # --------------------------------------------------
+            # Store Alert in SQLite
+            # --------------------------------------------------
+
             cursor.execute("""
             INSERT INTO alerts (
                 timestamp,
@@ -98,23 +137,11 @@ with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as file:
 
             conn.commit()
 
-            # Display alert
-            print("=" * 60)
-            print("🚨 SOC ALERT")
-            print("=" * 60)
-            print("Time        :", timestamp)
-            print("Source IP   :", source_ip)
-            print("Source Port :", source_port)
-            print("Destination :", destination_ip)
-            print("Dest Port   :", destination_port)
-            print("Protocol    :", protocol)
-            print("Signature   :", signature)
-            print("Signature ID:", signature_id)
-            print("Severity    :", severity)
-            print("Action      :", action)
-            print("Database    : SAVED")
-            print()
+            print("✅ Alert stored in SQLite")
 
         except json.JSONDecodeError:
             continue
+
+        except Exception as e:
+            print("Monitor error:", e)
 ```            
