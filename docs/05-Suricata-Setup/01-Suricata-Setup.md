@@ -183,3 +183,4 @@ with open(LOG_FILE, "r", encoding="utf-8", errors="ignore") as file:
 Then run it :- python C:\SOC_Project\alert_monitor.py
 
 Test it with an icmp test from the Kali VM, the alert monitor will display an alert
+
