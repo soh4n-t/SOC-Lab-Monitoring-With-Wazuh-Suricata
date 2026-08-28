@@ -1,6 +1,6 @@
 ## Components
 
-### Suricata - **Network Intrusion Detection System (NIDS)**
+### Suricata - Network Intrusion Detection System (NIDS)
 
 Suricata monitors network traffic flowing through the Windows endpoint and analyzes packets against its configured detection rules. When traffic matches a detection signature, Suricata generates an alert containing information such as the source and destination addresses, protocol, signature, severity, and action. These events are written to Suricata's `eve.json` log file.
 
