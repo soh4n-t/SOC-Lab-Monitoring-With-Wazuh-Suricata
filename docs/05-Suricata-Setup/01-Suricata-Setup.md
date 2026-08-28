@@ -57,6 +57,8 @@ Create a test rule :- notepad "C:\SuricataRules\test.rules"
 
 Paste this & save it :- alert icmp any any -> any any (msg:"TEST ICMP ALERT"; sid:1000001; rev:1;)  
 
+This test rule is a temporary pipeline validation rule. We disable it later.
+
 Make a folder :- mkdir C:\SOC_Project & Enter the folder :- cd C:\SOC_Project
 
 Create a python file :- notepad alert_monitor.py & paste the following code in it:
