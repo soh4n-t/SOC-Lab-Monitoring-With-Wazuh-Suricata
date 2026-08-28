@@ -8,9 +8,7 @@ In this project, Suricata acts as the network-level detection component and uses
 
 ---
 
-### Sysmon
-
-**Windows Endpoint Telemetry Provider**
+### Sysmon - Windows Endpoint Telemetry Provider
 
 Sysmon provides detailed Windows endpoint telemetry that is more granular than ordinary Windows event logging. It records security-relevant activities such as process creation, network connections, DNS queries, file creation, registry activity, and other system events depending on the configured Sysmon policy.
 
