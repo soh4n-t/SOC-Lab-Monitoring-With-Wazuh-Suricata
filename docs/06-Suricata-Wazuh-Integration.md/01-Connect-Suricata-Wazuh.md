@@ -16,4 +16,4 @@ Verify connection with Wazuh manager :- Test-NetConnection 192.168.198.129 -Port
 
 Then check the Wazuh agent log :- Get-Content "C:\Program Files (x86)\ossec-agent\ossec.log" -Tail 50
 
-It will show like :- <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f32a263b-d558-458e-9a8c-756e273a7b6e" />
+It will show like :- <img width="833" height="673" alt="image" src="https://github.com/user-attachments/assets/9955fec4-e9e5-407c-94af-e61ae0d590c7" />
