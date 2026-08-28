@@ -17,7 +17,7 @@ Open Administrator PowerShell:
 ```
 - Restart Wazuh agent :- Restart-Service Wazuh
 - Verify :- Get-Service WazuhSvc
-- Sysmon generate detailed Windows telemetry. The Wazuh Agent collects these Sysmon events and forwards them to the Wazuh Manager, where Wazuh's rules can process them.
+- Sysmon generate detailed Windows telemetry. The Wazuh Agent collects these Sysmon events and forwards them to the Wazuh Manager, where Wazuh rules can process them.
 ### Generate a test event
 - Run notepad.exe and close it
 - Run :- powershell.exe -Command "Get-Process"
