@@ -1,4 +1,6 @@
 ### Storing Suricata Alerts in SQLite
+SQLite provides a local database for the custom Python monitor. It is used for independent alert persistence, querying and testing. It will be included in future scope.
+
 Replace alerts_monitor.py with the following code:
 ```
 import json
