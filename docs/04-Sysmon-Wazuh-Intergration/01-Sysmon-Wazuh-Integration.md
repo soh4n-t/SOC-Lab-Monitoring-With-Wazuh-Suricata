@@ -9,6 +9,7 @@ Open Administrator PowerShell:
   <location>Microsoft-Windows-Sysmon/Operational</location>
   <log_format>eventchannel</log_format>
 </localfile>
+
 <localfile>
   <location>Microsoft-Windows-Powershell/Operational</location>
   <log_format>eventchannel</log_format>
