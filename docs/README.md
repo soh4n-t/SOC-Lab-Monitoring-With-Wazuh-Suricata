@@ -1,10 +1,10 @@
 ## Components
 
-### Suricata - Network Intrusion Detection System (NIDS)
+### Wazuh - SIEM / Centralized Security Analysis and Visualization Platform
 
-Suricata monitors network traffic flowing through the Windows endpoint and analyzes packets against its configured detection rules. When traffic matches a detection signature, Suricata generates an alert containing information such as the source and destination addresses, protocol, signature, severity, and action. These events are written to Suricata's `eve.json` log file.
+Wazuh acts as the central security monitoring platform of the project. The Wazuh Agent installed on the Windows endpoint collects Windows and Sysmon events as well as Suricata's JSON alerts. These events are forwarded to the Wazuh Manager, where Wazuh's analysis and detection logic processes the collected data and generates alerts when applicable.
 
-In this project, Suricata acts as the network-level detection component and uses both its enabled ruleset and project-specific rules when required.
+The Wazuh Dashboard provides a centralized interface for searching, filtering, investigating, and visualizing security events and alerts.
 
 ---
 
@@ -16,11 +16,11 @@ In this project, Sysmon generates endpoint telemetry on the Windows machine, whi
 
 ---
 
-### Wazuh - SIEM / Centralized Security Analysis and Visualization Platform
+### Suricata - Network Intrusion Detection System (NIDS)
 
-Wazuh acts as the central security monitoring platform of the project. The Wazuh Agent installed on the Windows endpoint collects Windows and Sysmon events as well as Suricata's JSON alerts. These events are forwarded to the Wazuh Manager, where Wazuh's analysis and detection logic processes the collected data and generates alerts when applicable.
+Suricata monitors network traffic flowing through the Windows endpoint and analyzes packets against its configured detection rules. When traffic matches a detection signature, Suricata generates an alert containing information such as the source and destination addresses, protocol, signature, severity, and action. These events are written to Suricata's `eve.json` log file.
 
-The Wazuh Dashboard provides a centralized interface for searching, filtering, investigating, and visualizing security events and alerts.
+In this project, Suricata acts as the network-level detection component and uses both its enabled ruleset and project-specific rules when required.
 
 ---
 
