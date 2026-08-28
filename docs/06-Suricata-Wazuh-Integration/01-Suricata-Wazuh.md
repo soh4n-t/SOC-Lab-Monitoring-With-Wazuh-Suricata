@@ -18,9 +18,9 @@ Then check the Wazuh agent log :- Get-Content "C:\Program Files (x86)\ossec-agen
 
 It will show like :- Agent is now online, continuing....
 
-Start Suricata and alert monitor, then on Kali run :- sudo dhclient -r && sudo dhclient
+Start Suricata, then on Kali run :- sudo dhclient -r && sudo dhclient
 
-After it appears in the alert monitor, check whether Wazuh manager received it (in Ubuntu server) :- sudo tail -f /var/ossec/logs/ossec.log
+Check whether Wazuh manager received it (in Ubuntu server) :- sudo tail -f /var/ossec/logs/ossec.log
 
 Then check Suricata events stored (in Ubuntu server) :- sudo tail -n 50 /var/ossec/logs/alerts/alerts.json
 
