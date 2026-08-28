@@ -22,7 +22,7 @@ Update :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\
 
 Run :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\suricata-update" --suricata "C:\Program Files\Suricata\suricata.exe"
 
-If certificate verify failed; run :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\suricata-update" --suricata "C:\Program Files\Suricata\suricata.exe" --no-check-certificate
+If certificate verify fails; run :- python "C:\Users\Name\AppData\Local\Python\pythoncore-3.14-64\Scripts\suricata-update" --suricata "C:\Program Files\Suricata\suricata.exe" --no-check-certificate
 
 If it shows failed to copy files, create a temp folder :- New-Item -ItemType Directory -Force C:\SuricataRules
 
