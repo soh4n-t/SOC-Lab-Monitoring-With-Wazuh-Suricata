@@ -1,55 +1,60 @@
+```
                          KALI LINUX
-                    Security Testing
-                           │
-                           │
-                  Network / Test Traffic
-                           │
-                           ▼
+                      Security Testing
+                              │
+                              │
+                    Network / Test Traffic
+                              │
+                              ▼
 ┌───────────────────────────────────────────────────────────────┐
-│                       WINDOWS 10 VM                           │
-│                     Monitored Endpoint                        │
+│                         WINDOWS 10 VM                         │
+│                       Monitored Endpoint                      │
 │                                                               │
-│    ┌──────────────┐                    ┌───────────────┐     │
-│    │    Sysmon    │                    │   Suricata    │     │
-│    │              │                    │   Network IDS │     │
-│    │ Endpoint     │                    │               │     │
-│    │ Telemetry    │                    │ Detection     │     │
-│    └──────┬───────┘                    └───────┬───────┘     │
-│           │                                    │             │
-│           │                                    ▼             │
-│           │                              ┌──────────┐        │
-│           │                              │ eve.json │        │
-│           │                              └────┬─────┘        │
-│           │                                   │              │
-│           │                    ┌──────────────┴──────────┐   │
-│           │                    │                         │   │
-│           │                    ▼                         ▼   │
-│           │             Python Alert Monitor       Wazuh Agent│
-│           │                    │                         │   │
-│           │                    ▼                         │   │
-│           │             soc_alerts.db                   │   │
-│           │                                             │   │
-└───────────┼─────────────────────────────────────────────┼───┘
-            │                                             │
-            │ Sysmon Events                               │
-            │                                             │ Suricata Events
-            │                                             │
-            └──────────────────────┬──────────────────────┘
+│    ┌──────────────┐                ┌───────────────┐          │
+│    │    Sysmon    │                │   Suricata    │          │
+│    │              │                │  Network IDS  │          │
+│    │   Endpoint   │                │               │          │
+│    │  Telemetry   │                │   Detection   │          │
+│    └──────┬───────┘                └───────┬───────┘          │
+│           │                                │                  │
+│           │                                ▼                  │
+│           │                          ┌───────────┐            │
+│           │                          │ eve.json  │            │
+│           │                          └─────┬─────┘            │
+│           │                                │                  │
+│           │                 ┌──────────────┴──────────┐       │
+│           │                 │                         │       │
+│           │                 ▼                         ▼       │
+│           │        Python Alert Monitor          Wazuh Agent  │
+│           │                 │                         │       │
+│           │                 ▼                         │       │
+│           │           soc_alerts.db                   │       │
+│           │                                           │       │
+└───────────┼───────────────────────────────────────────┼───────┘
+            │                                           │
+            │ Sysmon Events                             │
+            │                                           │ Suricata Events
+            │                                           │
+            └──────────────────────┬────────────────────┘
                                    ▼
                         ┌─────────────────────┐
                         │    UBUNTU SERVER    │
                         │                     │
-                        │   Wazuh Manager     │
+                        │    Wazuh Manager    │
                         │          │          │
                         │          ▼          │
-                        │   Wazuh Dashboard  │
+                        │   Wazuh Dashboard   │
                         └──────────┬──────────┘
                                    │
-                                   │ Accessed through
-                                   │ browser
+                                   │ Dashboard accessed through
+                                   │ host system's browser
                                    ▼
                         ┌─────────────────────┐
-                        │    WINDOWS HOST     │
+                        │     HOST  SYSTEM    │
                         │                     │
                         │     Web Browser     │
+                        │          │          │
+                        │          ▼          │
+                        │   Wazuh Dashboard   │
                         └─────────────────────┘
+```
