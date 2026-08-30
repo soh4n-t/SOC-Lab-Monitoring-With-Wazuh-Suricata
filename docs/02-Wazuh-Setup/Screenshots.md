@@ -6,3 +6,5 @@
 ### Windows connected to Wazuh
 
 <img width="1533" height="622" alt="image" src="https://github.com/user-attachments/assets/4cfe2276-80c9-4bfb-b6f3-20c717b0ccf0" />
+
+<img width="998" height="256" alt="image" src="https://github.com/user-attachments/assets/56c2a854-78cd-425f-85f4-81035afa1c56" />
