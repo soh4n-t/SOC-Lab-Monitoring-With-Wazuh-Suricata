@@ -1,4 +1,4 @@
-### Enabling Wazuh archives in Wazuh dashboard
+### Enabling Wazuh archives in Wazuh dashboard (Optional)
 Archives are enabled to see events that may not generate a Wazuh alert, allowing raw event investigation in the SOC lab (It is optional).
 On ubuntu-server run :- sudo cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.backup
 
