@@ -3,6 +3,7 @@ Download Sysmon officially - `https://learn.microsoft.com/en-us/sysinternals/dow
 
 ### For Creating a Sysmon Folder
 Open Administrator PowerShell and run:
+
 `New-Item -ItemType Directory -Path C:\Sysmon   (Creating directory path)`
 
 `Copy-Item "$env:<username>\Downloads\Sysmon64.exe" "C:\Sysmon\Sysmon64.exe"   (Copying sysmon to new path)`
