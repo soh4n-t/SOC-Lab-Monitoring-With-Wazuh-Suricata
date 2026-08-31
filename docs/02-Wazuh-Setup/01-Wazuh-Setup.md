@@ -10,8 +10,10 @@ It is needed for accessing wazuh dashboard in the host system.
 
 
 ### Check Wazuh Services
-  - sudo systemctl status wazuh-manager.service
-  - sudo systemctl status wazuh-indexer.service
-  - sudo systemctl status wazuh-dashboard.service
+` sudo systemctl status wazuh-manager.service `
+
+` sudo systemctl status wazuh-indexer.service `
+
+` sudo systemctl status wazuh-dashboard.service `
 
 Once Wazuh services are active; in the host system, open browser and enter https://ubuntu-ip.
