@@ -35,10 +35,10 @@ filebeat.modules:
       enabled: false
 ```  
 Then change;
-```
+``
 archives:    
   enabled : true
-```
+``
 Test filebeat configuration :- `sudo filebeat test config`
 
 Test connection to Wazuh indexer :- `sudo filebeat test output`
