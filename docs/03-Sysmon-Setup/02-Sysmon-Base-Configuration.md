@@ -1,6 +1,7 @@
 ### Create a Sysmon Configuration File
 In Administrator PowerShell, run:
-- notepad C:\Sysmon\sysmonconfig.xml
+
+`notepad C:\Sysmon\sysmonconfig.xml`
 
 Paste the following and save it:
 ```
@@ -40,5 +41,5 @@ Paste the following and save it:
   </EventFiltering>
 </Sysmon>
 ```
-Then update the configuration :- C:\Sysmon\Sysmon64.exe -c C:\Sysmon\sysmonconfig.xml
+Then update the configuration :- `C:\Sysmon\Sysmon64.exe -c C:\Sysmon\sysmonconfig.xml`
 
