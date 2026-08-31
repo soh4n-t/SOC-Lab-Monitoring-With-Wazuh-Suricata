@@ -16,4 +16,4 @@ It is needed for accessing wazuh dashboard in the host system.
 
 ` sudo systemctl status wazuh-dashboard.service `
 
-Once Wazuh services are active; in the host system, open browser and enter https://ubuntu-ip.
+Once Wazuh services are active; in the host system, open browser and enter ` https://ubuntu-ip `.
