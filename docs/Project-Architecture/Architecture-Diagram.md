@@ -1,11 +1,11 @@
-```
-                         KALI LINUX
-                      Security Testing
-                              │
-                              │
-                    Network / Test Traffic
-                              │
-                              ▼
+``` 
+                          KALI LINUX
+                       Security Testing
+                               │
+                               │
+                     Network / Test Traffic
+                               │
+                               ▼
 ┌───────────────────────────────────────────────────────────────┐
 │                         WINDOWS 10 VM                         │
 │                       Monitored Endpoint                      │
