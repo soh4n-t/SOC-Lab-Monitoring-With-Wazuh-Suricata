@@ -22,4 +22,4 @@ Open Administrator PowerShell and run:
 
 `close notepad`
 
-`Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational" -MaxEvents 10 | Select-Object TimeCreated, Id, ProviderName, Message   (Should generate process creation telemetry)`
+`Get-WinEvent -FilterHashtable @{LogName = "Microsoft-Windows-Sysmon/Operational"; Id = 1 } -MaxEvents 10 | Select-Object TimeCreated, Id, Message   (Should generate process creation telemetry)`
